@@ -1,11 +1,11 @@
 #include <iostream>
 #include <assert.h>
-#define CELSIUS_THRESHOLD_ALERT = 200;
+#define CELCIUS_THRESHOLD_ALERT 200
 int alertFailureCount = 0;
 
 int networkAlertStub(float celcius) {
     std::cout << "ALERT: Temperature is " << celcius << " celcius.\n";
-    if( celsius < CELSIUS_THRESHOLD_ALERT)
+    if( celcius < CELCIUS_THRESHOLD_ALERT)
     {
        // Return 200 for ok
        return 200;
