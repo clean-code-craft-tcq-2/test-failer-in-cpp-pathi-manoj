@@ -5,26 +5,30 @@ int printColorMap() {
     int i = 0, j = 0;
     for(i = 0; i < 5; i++) {
         for(j = 0; j < 5; j++) {
-            int number = printNumberToConsole(i , j);
-            printColourPairToConsole(i, j);
-            assert(number >=1 && number <=25);
+            printNumberToConsole(i , j);
+            printMajorColorToConsole(j);
+            printMinorColorToConsole(j);
         }
     }
     return i * j;
 }
 
-int printNumberToConsole(int i , int j)
+void printNumberToConsole(int i , int j)
 {
     int number = i * 5 + j;
     std::cout << number;
-    return number;
+    assert(number >=1 && number <=25);
 }
 
-void printColourPairToConsole(int i , int j)
+void printMajorColorToConsole(int i)
 {
     const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+    std::cout << "\t | " << majorColor[i] << "\n";
+}
+void printMinorColorToConsole(int i)
+{
     const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
-    std::cout << "\t | " << majorColor[i] << "\t | " << minorColor[i] << "\n"
+    std::cout << "\t | " << minorColor[i] << "\n";
 }
 
 int main() {
