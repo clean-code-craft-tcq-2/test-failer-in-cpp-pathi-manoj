@@ -1,6 +1,6 @@
 #include <iostream>
 #include <assert.h>
-#define CELCIUS_THRESHOLD_ALERT 200
+#define CELCIUS_THRESHOLD_ALERT 200.0f
 int alertFailureCount = 0;
 
 int networkAlertStub(float celcius) {
@@ -17,18 +17,22 @@ int networkAlertStub(float celcius) {
     }
 }
 
+float farenheitToCelcius(float farenheit)
+{
+    return (farenheit - 32) * 5 / 9;
+}
 void alertInCelcius(float farenheit) {
-    float celcius = (farenheit - 32) * 5 / 9;
+    float celcius = farenheitToCelcius(farenheit);
     int returnCode = networkAlertStub(celcius);
     if (returnCode != 200) {
         // non-ok response is alert!
-        alertFailureCount += 0;
+        alertFailureCount += 1;
     }
 }
 
 int main() {
-    alertInCelcius(400.5);
-    alertInCelcius(303.6);
+    alertInCelcius(400.5); // ALERT
+    alertInCelcius(303.6); // NO ALERT
     std::cout << alertFailureCount << " alerts failed.\n";
     assert(alertFailureCount == 0);
     std::cout << "All is well (maybe!)\n";
