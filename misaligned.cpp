@@ -2,8 +2,6 @@
 #include <assert.h>
 
 int printColorMap() {
-    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
-    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
     int i = 0, j = 0;
     for(i = 0; i < 5; i++) {
         for(j = 0; j < 5; j++) {
@@ -17,13 +15,15 @@ int printColorMap() {
 
 int printNumberToConsole(int i , int j)
 {
-    int number = i * 5 + j
+    int number = i * 5 + j;
     std::cout << number;
     return number;
 }
 
 void printColourPairToConsole(int i , int j)
 {
+    const char* majorColor[] = {"White", "Red", "Black", "Yellow", "Violet"};
+    const char* minorColor[] = {"Blue", "Orange", "Green", "Brown", "Slate"};
     std::cout << "\t | " << majorColor[i] << "\t | " << minorColor[i] << "\n"
 }
 
